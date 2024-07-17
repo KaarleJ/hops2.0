@@ -1,35 +1,43 @@
+import { getServerSession } from "next-auth";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt hic non
-        corporis libero reprehenderit illum consequuntur. Quae aliquam
-        dignissimos, possimus illum voluptatem architecto adipisci eius
-        molestiae et rem aut ex.
-      </h1>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-        consectetur, neque at consectetur ultricies, erat libero fermentum
-        sapien, nec gravida justo nunc nec justo. Sed in purus eget mi fermentum
-        ultricies. Nulla facilisi. Nullam nec nunc nec elit sollicitudin
-        ultricies. Sed nec libero in odio ultricies ultricies. Nullam nec nunc
-        nec elit sollicitudin ultricies. Sed nec libero in odio ultricies
-        ultricies. Nullam nec nunc nec elit sollicitudin ultricies. Sed nec
-        libero in odio ultricies ultricies. Nullam nec nunc nec elit
-        sollicitudin ultricies. Sed nec libero in odio ultricies ultricies.
-        Nullam nec nunc nec elit sollicitudin ultricies. Sed nec libero in odio
-        ultricies ultricies. Nullam nec nunc nec elit sollicitudin ultricies.
-        Sed nec libero in odio ultricies ultricies.
+    <main className="flex min-h-screen flex-col items-center justify-start">
+      <div className="h-full shadow-lg">
+        <Image
+          src="/landing.webp"
+          alt="landing"
+          width={1000}
+          height={1000}
+          className="object-cover w-screen max-h-96"
+        />
       </div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-        consectetur, neque at consectetur ultricies, erat libero fermentum
-        sapien, nec gravida justo nunc nec justo. Sed in purus eget mi fermentum
-        ultricies. Nulla facilisi. Nullam nec nunc nec elit sollicitudin
-        ultricies. Sed nec libero in odio ultricies ultricies. Nullam nec nunc
-        nec elit sollicitudin ultricies. Sed nec libero in odio ultricies
-        ultricies. Nullam nec nunc nec elit sollicitudin ultricies. Sed nec
+      <div className="w-screen bg-primary bg-gradient-to-r from-primary to-secondary px-10 md:px-32 py-6 md:py-10 text-primary-foreground">
+        <h1 className="text-left mb-2 md:mb-6">HopsApp</h1>
+        <h2 className="mt-2 md:mt-6">
+          A new and intuitive way to plan your studies
+        </h2>
+        <Button asChild className="bg-gradient-to-r from-purple-600 to-violet-600 shadow-md mt-6 hover:brightness-90">
+          <Link
+            href={session ? "/calendar" : "/api/auth/signin"}
+          >
+            Get started
+          </Link>
+        </Button>
+      </div>
+
+      <div className="px-4 md:px-32 py-6 md:py-24 flex flex-col justify-start items-start w-screen">
+        {session ? (
+          <>
+            <h2>Welcome back {session.user?.name}!</h2>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </main>
   );
