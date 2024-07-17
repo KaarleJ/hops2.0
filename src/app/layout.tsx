@@ -3,8 +3,9 @@ import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-import { ThemeProvider } from "@/components/ThemeProvider";
+import ContextProvider from "@/components/ContextProvider";
 import Navbar from "@/components/custom/Navbar";
+import Footer from "@/components/custom/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -29,15 +30,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ContextProvider>
           <Navbar />
-          <div className="mt-24">{children}</div>
-        </ThemeProvider>
+          {children}
+          <Footer />
+        </ContextProvider>
       </body>
     </html>
   );
