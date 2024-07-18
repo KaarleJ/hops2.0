@@ -16,7 +16,7 @@ export default async function Home() {
           className="object-cover w-screen max-h-96"
         />
       </div>
-      <div className="w-screen bg-primary bg-gradient-to-r from-primary to-secondary px-10 md:px-32 py-6 md:py-10 text-primary-foreground">
+      <div className="w-screen bg-primary bg-gradient-to-r from-primary to-violet-500 px-10 md:px-28 py-6 md:py-10 text-primary-foreground">
         <h1 className="text-left mb-2 md:mb-6">HopsApp</h1>
         <h2 className="mt-2 md:mt-6">
           A new and intuitive way to plan your studies
@@ -30,7 +30,7 @@ export default async function Home() {
         </Button>
       </div>
 
-      <div className="px-4 md:px-32 py-6 md:py-24 flex flex-col justify-start items-start w-screen">
+      <div className="px-4 md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-screen">
         {session ? (
           <>
             <h2>Welcome back {session.user?.name}!</h2>
