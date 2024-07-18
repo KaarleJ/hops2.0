@@ -14,10 +14,10 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function MobileMenu({ session }: { session: Session | null }) {
   return (
-    <div className="flex flex-row items-center">
+    <div className="flex flex-row items-center md:hidden">
       <ThemeToggle />
       <DropdownMenu>
-        <DropdownMenuTrigger className="ml-4 flex md:hidden">
+        <DropdownMenuTrigger className="ml-4">
           <MenuIcon />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
