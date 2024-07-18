@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 export default async function Navbar() {
   const session = await getServerSession();
   return (
-    <div className="px-2 py-4 md:px-24 md:py-6 w-screen fixed top-0 left-0 z-50">
+    <div className="px-2 py-4 md:px-24 md:py-6 w-full fixed top-0 left-0 z-50">
       <nav className="py-2 px-8 md:px-36 bg-primary shadow-xl rounded-full text-lg text-primary-foreground flex flex-row justify-between items-center">
         <Link href="/" className="hover:text-muted-foreground hover:">
           <b>Hops</b>
