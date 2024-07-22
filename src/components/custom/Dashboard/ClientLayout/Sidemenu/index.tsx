@@ -25,7 +25,7 @@ export default function SideMenu({ collapsed }: SideMenuProps) {
           <CalendarDays size={24} className="text-primary" />
           <span className={`mx-1 ${collapsed && "hidden"}`}>Calendar</span>
         </SideMenuItem>
-        <SideMenuItem>
+        <SideMenuItem to='courselist'>
           <List size={24} className="text-primary" />
           <span className={`mx-1 ${collapsed && "hidden"}`}>Courselist</span>
         </SideMenuItem>
