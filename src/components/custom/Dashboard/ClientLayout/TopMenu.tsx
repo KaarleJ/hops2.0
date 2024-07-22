@@ -31,7 +31,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
   };
 
   return (
-    <div className="grid grid-cols-3 ">
+    <div className="flex flex-row items-center justify-between">
       <div className="col-start-1 flex items-center text-primary">
         <TooltipProvider>
           <Tooltip>
@@ -51,11 +51,11 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="col-start-2 flex flex-row items-center justify-center p-2">
+      <div className="col-start-2 flex flex-row items-center justify-center p-2 absolute inset-x-52">
         <Button
           size="mini"
           variant="ghost"
-          className="mx-6 text-primary"
+          className="md:mx-6 text-primary"
           onClick={() => setYear(year - 1)}
         >
           <ChevronLeft size={22} />
@@ -64,7 +64,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         <Button
           size="mini"
           variant="ghost"
-          className="mx-6 text-primary"
+          className="md:mx-6 text-primary"
           onClick={() => setYear(year + 1)}
         >
           <ChevronRight size={22} />
