@@ -35,7 +35,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
       <div className="col-start-1 flex items-center text-primary">
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <Button
                 variant="ghost"
                 size="mini"
