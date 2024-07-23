@@ -15,6 +15,12 @@ export const authOptions = {
       clientSecret: github_secret,
     }),
   ],
+  pages: {
+    verifyRequest: "/auth/verify-request",
+    signIn: "/auth/signin",
+    signOut: "/auth/signout",
+    error: "/auth/error",
+  },
 };
 
 const handler = NextAuth(authOptions);
