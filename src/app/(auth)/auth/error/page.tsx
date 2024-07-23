@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Error() {
@@ -17,7 +18,10 @@ export default function Error() {
         <CardTitle>Error</CardTitle>
         <CardDescription>Something went wrong</CardDescription>
       </CardHeader>
-      <CardContent>{search}</CardContent>
+      <CardContent>
+        <p>{search}</p>
+        <p className="my-6"><Link href='/auth/signin' className="underline">Sign in</Link> or return to <Link href='/' className="underline">home</Link></p>
+      </CardContent>
     </Card>
   );
 }
