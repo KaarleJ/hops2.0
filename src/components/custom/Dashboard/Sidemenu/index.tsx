@@ -9,11 +9,11 @@ interface SideMenuProps {
 export default function SideMenu({ collapsed }: SideMenuProps) {
   return (
     <div
-      className={`h-full flex flex-col items-start justify-start border-r border-accent overflow-hidden transition-all duration-500 ${
+      className={`h-full flex flex-col items-start justify-start transition-all duration-500 ${
         collapsed ? "w-10" : "w-44"
       }`}
     >
-      <div className="flex flex-row items-center justify-between py-2 pl-2">
+      <div className="flex flex-row items-center justify-between py-2 pl-2 ">
         <LayoutDashboard size={24} className="text-primary" />
         <span className={`text-md font-bold mx-1 ${collapsed && "hidden"}`}>
           Dashboard

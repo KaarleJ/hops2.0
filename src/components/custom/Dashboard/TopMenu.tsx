@@ -31,7 +31,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
   };
 
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between border-l border-accent">
       <div className="col-start-1 flex items-center text-primary">
         <TooltipProvider>
           <Tooltip>
