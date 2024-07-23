@@ -5,7 +5,7 @@ import { FaLinkedin as Linkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-background text-foreground p-12 border-t-2 border-accent">
+    <footer className="bg-background text-foreground p-12 border-t-2 border-accent w-full">
       <div className="h-full flex flex-col items-center justify-center">
         <h2 className="text-3xl">HopsApp2.0</h2>
         <h3 className="text-xl">by KaarleJ</h3>
