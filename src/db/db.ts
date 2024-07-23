@@ -8,7 +8,7 @@ const courses: Course[] = [
     code: "MATH101",
     ects: 5,
     startPeriod: 1,
-    endPeriod: 2,
+    endPeriod: 1,
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ const courses: Course[] = [
     code: "PHYS101",
     ects: 5,
     startPeriod: 3,
-    endPeriod: 4,
+    endPeriod: 3,
   },
   {
     id: "3",
@@ -26,7 +26,7 @@ const courses: Course[] = [
     code: "CHEM101",
     ects: 5,
     startPeriod: 4,
-    endPeriod: 5,
+    endPeriod: 4,
   },
   {
     id: "4",
@@ -35,7 +35,7 @@ const courses: Course[] = [
     code: "BIO101",
     ects: 5,
     startPeriod: 2,
-    endPeriod: 3,
+    endPeriod: 2,
   },
   {
     id: "5",
@@ -44,7 +44,7 @@ const courses: Course[] = [
     code: "CS101",
     ects: 5,
     startPeriod: 3,
-    endPeriod: 4,
+    endPeriod: 3,
   },
   {
     id: "6",
@@ -53,7 +53,7 @@ const courses: Course[] = [
     code: "HIST101",
     ects: 5,
     startPeriod: 1,
-    endPeriod: 2,
+    endPeriod: 1,
   },
   {
     id: "7",
@@ -62,7 +62,7 @@ const courses: Course[] = [
     code: "GEOG101",
     ects: 5,
     startPeriod: 4,
-    endPeriod: 5,
+    endPeriod: 4,
   },
   {
     id: "8",
@@ -71,7 +71,7 @@ const courses: Course[] = [
     code: "ECON101",
     ects: 5,
     startPeriod: 2,
-    endPeriod: 3,
+    endPeriod: 2,
   },
   {
     id: "9",
@@ -80,7 +80,7 @@ const courses: Course[] = [
     code: "LIT101",
     ects: 5,
     startPeriod: 3,
-    endPeriod: 4,
+    endPeriod: 3,
   },
   {
     id: "10",
@@ -89,7 +89,7 @@ const courses: Course[] = [
     code: "PHIL101",
     ects: 5,
     startPeriod: 1,
-    endPeriod: 2,
+    endPeriod: 1,
   },
   {
     id: "11",
@@ -98,7 +98,7 @@ const courses: Course[] = [
     code: "PSYCH101",
     ects: 5,
     startPeriod: 4,
-    endPeriod: 5,
+    endPeriod: 4,
   },
   {
     id: "12",
@@ -107,7 +107,7 @@ const courses: Course[] = [
     code: "SOC101",
     ects: 5,
     startPeriod: 2,
-    endPeriod: 3,
+    endPeriod: 2,
   },
   {
     id: "13",
@@ -116,7 +116,7 @@ const courses: Course[] = [
     code: "ART101",
     ects: 5,
     startPeriod: 3,
-    endPeriod: 4,
+    endPeriod: 3,
   },
 ];
 
@@ -126,6 +126,7 @@ export async function getCourses(year: number) {
     "Courses fetched:",
     courses.filter((course) => course.year === year)
   );
+  return courses.filter((course) => course.year === year);
 }
 
 export async function getCourse(id: string) {
