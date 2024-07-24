@@ -44,7 +44,7 @@ const courses: Course[] = [
     code: "CS101",
     ects: 5,
     startPeriod: 3,
-    endPeriod: 3,
+    endPeriod: 4,
   },
   {
     id: "6",
@@ -126,7 +126,8 @@ export async function getCourses(year: number) {
     "Courses fetched:",
     courses.filter((course) => course.year === year)
   );
-  return courses.filter((course) => course.year === year);
+  // sort the courses by startperiod
+  return courses.filter((course) => course.year === year).sort((a, b) => a.startPeriod - b.startPeriod);
 }
 
 export async function getCourse(id: string) {
