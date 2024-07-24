@@ -120,8 +120,10 @@ const courses: Course[] = [
   },
 ];
 
+const delay = () => new Promise((resolve) => setTimeout(resolve, 2000));
+
 export async function getCourses(year: number) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await delay();
   console.log(
     "Courses fetched:",
     courses.filter((course) => course.year === year)
@@ -131,17 +133,17 @@ export async function getCourses(year: number) {
 }
 
 export async function getCourse(id: string) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await delay();
   const course = courses.find((course) => course.id === id);
   console.log("Course fetched:", course);
 }
 
 export async function addCourse(course: Course) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await delay();
   console.log("Course added:", course);
 }
 
 export async function updateCourse(course: Course) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await delay();
   console.log("Course updated:", course);
 }
