@@ -120,14 +120,10 @@ const courses: Course[] = [
   },
 ];
 
-const delay = () => new Promise((resolve) => setTimeout(resolve, 2000));
+const delay = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 export async function getCourses(year: number) {
   await delay();
-  console.log(
-    "Courses fetched:",
-    courses.filter((course) => course.year === year)
-  );
   // sort the courses by startperiod
   return courses.filter((course) => course.year === year).sort((a, b) => a.startPeriod - b.startPeriod);
 }
@@ -135,7 +131,6 @@ export async function getCourses(year: number) {
 export async function getCourse(id: string) {
   await delay();
   const course = courses.find((course) => course.id === id);
-  console.log("Course fetched:", course);
 }
 
 export async function addCourse(course: Course) {
