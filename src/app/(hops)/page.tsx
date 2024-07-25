@@ -1,10 +1,8 @@
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function Home() {
-  const session = await getServerSession();
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <div className="h-full shadow-lg">
@@ -21,23 +19,26 @@ export default async function Home() {
         <h2 className="mt-2 md:mt-6">
           A new and intuitive way to plan your studies
         </h2>
-        <Button asChild className="bg-gradient-to-r from-purple-600 to-violet-600 shadow-md mt-6 hover:brightness-90">
-          <Link
-            href={session ? "/calendar" : "/api/auth/signin"}
-          >
-            Get started
-          </Link>
+        <Button
+          asChild
+          className="bg-gradient-to-r from-purple-600 to-violet-600 shadow-md mt-6 hover:brightness-90"
+        >
+          <Link href="/api/auth/signin">Get started</Link>
         </Button>
       </div>
 
       <div className="px-4 md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-full">
-        {session ? (
-          <>
-            <h2>Welcome back {session.user?.name}!</h2>
-          </>
-        ) : (
-          <></>
-        )}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        venenatis, nunc nec tincidunt fermentum, nunc felis bibendum nisl, nec
+        fermentum nunc dolor sit amet justo. Donec nec tortor nec lacus
+        pellentesque ultricies. Nullam nec justo nec nunc fermentum malesuada.
+        Donec eget velit at nunc tincidunt fermentum. Nullam nec justo nec nunc
+        fermentum malesuada. Donec eget velit at nunc tincidunt fermentum.
+        Nullam nec justo nec nunc fermentum malesuada. Donec eget velit at nunc
+        tincidunt fermentum. Nullam nec justo nec nunc fermentum malesuada.
+        Donec eget velit at nunc tincidunt fermentum. Nullam nec justo nec nunc
+        fermentum malesuada. Donec eget velit at nunc tincidunt fermentum.
+        Nullam
       </div>
     </main>
   );
