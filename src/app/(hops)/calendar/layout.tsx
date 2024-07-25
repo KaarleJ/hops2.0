@@ -16,7 +16,7 @@ export default function CalendarPageLayout({
       <div className="px-4 md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-full">
         <h1>CalendarPage</h1>
         <Dashboard>
-          <Suspense key={key} fallback={<Loading />}>
+          <Suspense key={key} fallback={<Loading className="absolute inset-x-2 inset-y-60" />}>
             {children}
           </Suspense>
         </Dashboard>
