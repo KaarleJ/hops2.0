@@ -51,7 +51,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="col-start-2 flex flex-row items-center justify-center p-2 absolute inset-x-52">
+      <div className="col-start-2 flex flex-row items-center justify-center p-2">
         <Button
           size="mini"
           variant="ghost"
@@ -69,8 +69,6 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         >
           <ChevronRight size={22} />
         </Button>
-      </div>
-      <div className="col-start-3 flex flex-row justify-end p-2">
         <Button size="mini">Add Course</Button>
       </div>
     </div>
