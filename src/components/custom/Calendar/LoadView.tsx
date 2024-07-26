@@ -1,17 +1,17 @@
 "use client";
-
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import { Course } from "@/types/types";
-import { Bar, BarChart } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#2563eb",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "#60a5fa",
+    color: "#7c3aed",
   },
 } satisfies ChartConfig;
 
@@ -52,12 +52,18 @@ export default function LoadView({ courses }: { courses: Course[] }) {
   ];
   console.log(periods);
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="w-full h-full p-12 overflow-hidden"
-    >
+    <ChartContainer config={chartConfig} className="min-h-[50px] w-full h-full">
       <BarChart accessibilityLayer data={periods}>
-        <Bar dataKey="ects" fill={chartConfig.desktop.color} radius={4} />
+        <CartesianGrid vertical={false} />
+        <XAxis
+          dataKey="name"
+          tickLine={false}
+          tickMargin={10}
+          axisLine={false}
+          tickFormatter={(value) => value.slice(0, 3)}
+        />
+        <Bar dataKey="ects" fill={chartConfig.desktop.color} radius={8} />
+        <ChartTooltip content={<ChartTooltipContent />} />
       </BarChart>
     </ChartContainer>
   );
