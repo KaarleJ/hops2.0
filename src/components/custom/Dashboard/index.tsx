@@ -14,7 +14,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
       <div className="w-full h-full rounded-sm flex flex-col justify-start">
         <TopMenu collapsed={collapsed} setCollapsed={setCollapsed} />
         <Separator />
-        <div className="p-2 border-l border-accent h-full">{children}</div>
+        <div className="border-l border-accent h-full">{children}</div>
       </div>
     </div>
   );
