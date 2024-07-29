@@ -6,7 +6,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Course } from "@/types/types";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from "recharts";
 
 const chartConfig = {
   desktop: {
@@ -53,17 +53,32 @@ export default function LoadView({ courses }: { courses: Course[] }) {
   console.log(periods);
   return (
     <ChartContainer config={chartConfig} className="min-h-[50px] w-full h-full">
-      <BarChart accessibilityLayer data={periods}>
+      <BarChart
+        barCategoryGap={"30%"}
+        margin={{ top: 50, bottom: 50 }}
+        accessibilityLayer
+        data={periods}
+      >
         <CartesianGrid vertical={false} />
+        <YAxis
+          dataKey="ects"
+          tickLine={false}
+          tickMargin={10}
+          axisLine={false}
+        >
+          <Label value="ECTS" position="left" angle={-90} offset={-20} />
+        </YAxis>
         <XAxis
           dataKey="name"
           tickLine={false}
           tickMargin={10}
           axisLine={false}
           tickFormatter={(value) => value.slice(0, 3)}
-        />
-        <Bar dataKey="ects" fill={chartConfig.desktop.color} radius={8} />
+        >
+          <Label value="Periods" position="bottom" offset={10} />
+        </XAxis>
         <ChartTooltip content={<ChartTooltipContent />} />
+        <Bar dataKey="ects" fill={chartConfig.desktop.color} radius={8} />
       </BarChart>
     </ChartContainer>
   );
