@@ -12,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import AddCourseModal from "./AddCourseModal";
 
 interface TopMenuProps {
   collapsed: boolean;
@@ -69,7 +70,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         >
           <ChevronRight size={22} />
         </Button>
-        <Button size="mini">Add Course</Button>
+        <AddCourseModal />
       </div>
     </div>
   );
