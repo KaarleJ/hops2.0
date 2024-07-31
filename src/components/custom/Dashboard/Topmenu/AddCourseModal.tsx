@@ -7,11 +7,9 @@ import { courseSchema } from "@/schemas/courseSchema";
 
 import {
   Modal,
-  ModalBody,
   ModalClose,
   ModalContent,
   ModalDescription,
-  ModalFooter,
   ModalHeader,
   ModalTitle,
   ModalTrigger,

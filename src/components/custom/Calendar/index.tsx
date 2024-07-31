@@ -1,5 +1,6 @@
 import { Course } from "@/types/types";
 import { Button } from "@/components/ui/button";
+import CourseModal from "./CourseModal";
 
 export default function Calendar({ courses }: { courses: Course[] }) {
   if (courses.length === 0) {
@@ -11,15 +12,16 @@ export default function Calendar({ courses }: { courses: Course[] }) {
       {courses.map((course) => {
         // We apply grid attributes by using style prop since tailwind has bugs with grid
         return (
-          <Button
-            style={{
-              gridColumnStart: course.startPeriod,
-              gridColumnEnd: course.endPeriod + 1,
-            }}
-            key={course.name}
-          >
-            {course.name} {course.startPeriod}-{course.endPeriod}
-          </Button>
+          <CourseModal course={course} key={course.name}>
+            <Button
+              style={{
+                gridColumnStart: course.startPeriod,
+                gridColumnEnd: course.endPeriod + 1,
+              }}
+            >
+              <span className="mx-6">{course.name}</span> {course.ects} ECTS
+            </Button>
+          </CourseModal>
         );
       })}
     </div>
