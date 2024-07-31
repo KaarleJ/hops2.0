@@ -121,6 +121,8 @@ export default function AddCourseForm() {
                       <Input
                         type="number"
                         placeholder="Start period..."
+                        min={1}
+                        max={5}
                         {...field}
                       />
                     </FormControl>
@@ -138,6 +140,8 @@ export default function AddCourseForm() {
                       <Input
                         type="number"
                         placeholder="End period"
+                        min={1}
+                        max={5}
                         {...field}
                       />
                     </FormControl>
