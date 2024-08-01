@@ -21,17 +21,24 @@ interface CourseModalProps {
 export default function CourseModal({ course, children }: CourseModalProps) {
   return (
     <Modal>
-      <ModalTrigger asChild>{children}</ModalTrigger>
+      <ModalTrigger asChild className="hover:cursor-pointer">
+        {children}
+      </ModalTrigger>
       <ModalContent>
         <ModalHeader>
           <ModalTitle>{course.name}</ModalTitle>
           <ModalDescription>{course.code}</ModalDescription>
         </ModalHeader>
         <ModalBody>
-          <p>Start period: {course.startPeriod}</p>
-          <p>End period: {course.endPeriod}</p>
-          <p>ECTS: {course.ects}</p>
-          <p>Length: {course.endPeriod - course.startPeriod + 1} periods</p>
+          <div className="py-4">
+            <p>Year: {course.year}</p>
+            <p>Start period: {course.startPeriod}</p>
+            <p>End period: {course.endPeriod}</p>
+          </div>
+          <div className="py-4">
+            <p>ECTS: {course.ects}</p>
+            <p>Length: {course.endPeriod - course.startPeriod + 1} periods</p>
+          </div>
         </ModalBody>
         <ModalFooter>
           <ModalClose>Close</ModalClose>
