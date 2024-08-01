@@ -75,7 +75,7 @@ export default function LoadView({ courses }: { courses: Course[] }) {
           axisLine={false}
           tickFormatter={(value) => value.slice(0, 3)}
         >
-          <Label value="Periods" position="bottom" offset={10} />
+          <Label value="Period" position="bottom" offset={10} />
         </XAxis>
         <ChartTooltip content={<ChartTooltipContent />} />
         <Bar dataKey="ects" fill={chartConfig.desktop.color} radius={8} />
