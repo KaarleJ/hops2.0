@@ -1,6 +1,6 @@
 import { Course } from "@/types/types";
 import { Button } from "@/components/ui/button";
-import CourseModal from "./CourseModal";
+import CourseModal from "../CourseModal";
 
 export default function Calendar({ courses }: { courses: Course[] }) {
   if (courses.length === 0) {

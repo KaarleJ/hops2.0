@@ -10,7 +10,7 @@ import {
   ModalFooter,
   ModalTrigger,
   ModalBody,
-} from "../../ui/modal";
+} from "../ui/modal";
 import { Course } from "@/types/types";
 
 interface CourseModalProps {
