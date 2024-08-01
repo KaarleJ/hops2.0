@@ -8,12 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import CourseModal from "./CourseModal";
 
-export default function CourseList({
-  courses,
-}: {
-  courses: Course[];
-}) {
+export default function CourseList({ courses }: { courses: Course[] }) {
   return (
     <Table>
       {courses.length === 0 && (
@@ -31,17 +28,19 @@ export default function CourseList({
       <TableBody>
         {courses.map((course) => {
           return (
-            <TableRow key={course.id}>
-              <TableCell>{course.code}</TableCell>
-              <TableCell>{course.name}</TableCell>
-              <TableCell className="text-center">{course.ects}</TableCell>
-              <TableCell className="text-center">
-                {course.startPeriod}
-              </TableCell>
-              <TableCell className="text-right">
-                {course.endPeriod - course.startPeriod + 1}
-              </TableCell>
-            </TableRow>
+            <CourseModal course={course} key={course.id}>
+              <TableRow>
+                <TableCell>{course.code}</TableCell>
+                <TableCell>{course.name}</TableCell>
+                <TableCell className="text-center">{course.ects}</TableCell>
+                <TableCell className="text-center">
+                  {course.startPeriod}
+                </TableCell>
+                <TableCell className="text-right">
+                  {course.endPeriod - course.startPeriod + 1}
+                </TableCell>
+              </TableRow>
+            </CourseModal>
           );
         })}
       </TableBody>
