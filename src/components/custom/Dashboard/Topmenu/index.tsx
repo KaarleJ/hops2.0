@@ -12,7 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import AddCourseModal from "./AddCourseModal";
+import AddCourseModal from "../../modals/AddCourseModal";
 
 interface TopMenuProps {
   collapsed: boolean;

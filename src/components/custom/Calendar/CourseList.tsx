@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import CourseModal from "../CourseModal";
+import CourseModal from "../modals/CourseModal";
 
 export default function CourseList({ courses }: { courses: Course[] }) {
   return (
