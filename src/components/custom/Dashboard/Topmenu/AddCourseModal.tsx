@@ -87,7 +87,7 @@ export default function AddCourseForm() {
                   <FormItem>
                     <FormLabel>ECTS</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="ects..." {...field} />
+                      <Input type="number" placeholder="ects..." min={0} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -113,7 +113,7 @@ export default function AddCourseForm() {
                 control={form.control}
                 name="startPeriod"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="w-full pr-3">
                     <FormLabel>Starting period</FormLabel>
                     <FormControl>
                       <Input
@@ -132,7 +132,7 @@ export default function AddCourseForm() {
                 control={form.control}
                 name="endPeriod"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="w-full pl-3">
                     <FormLabel>Ending period</FormLabel>
                     <FormControl>
                       <Input
