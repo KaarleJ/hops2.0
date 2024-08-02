@@ -2,7 +2,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default async function Home() {
+export const dynamic = "force-static";
+
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <div className="h-full shadow-lg">
