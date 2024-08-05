@@ -15,6 +15,8 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+
+// This function calculates the total ECTS load for a given period
 const aggregateToPeriod = (courses: Course[], period: number) => {
   // filter courses that start on the given period, but do not span
   const initialCourses = courses.filter(
