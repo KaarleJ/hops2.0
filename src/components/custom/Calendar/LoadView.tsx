@@ -50,7 +50,6 @@ export default function LoadView({ courses }: { courses: Course[] }) {
     { name: "3", ects: aggregateToPeriod(courses, 3) },
     { name: "4", ects: aggregateToPeriod(courses, 4) },
   ];
-  console.log(periods);
   return (
     <ChartContainer config={chartConfig} className="min-h-[50px] w-full h-full">
       <BarChart
