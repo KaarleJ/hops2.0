@@ -1,4 +1,4 @@
-import { Course } from "@/types/types";
+import { Course } from "../../../../types";
 import { Button } from "@/components/ui/button";
 import CourseModal from "../modals/CourseModal";
 

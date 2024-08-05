@@ -5,7 +5,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Course } from "@/types/types";
+import { Course } from "../../../../types";
 import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from "recharts";
 
 const chartConfig = {
@@ -59,12 +59,7 @@ export default function LoadView({ courses }: { courses: Course[] }) {
         data={periods}
       >
         <CartesianGrid vertical={false} />
-        <YAxis
-          dataKey="ects"
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-        >
+        <YAxis dataKey="ects" tickLine={false} tickMargin={10} axisLine={false}>
           <Label value="ECTS" position="left" angle={-90} offset={-20} />
         </YAxis>
         <XAxis
