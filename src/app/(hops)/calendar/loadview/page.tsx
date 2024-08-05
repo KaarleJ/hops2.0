@@ -1,5 +1,5 @@
 import LoadView from "@/components/custom/Calendar/LoadView";
-import { getCourses } from "@/db/db";
+import { getCourses } from "@/actions";
 
 export default async function LoadViewPage({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const year = Number(searchParams.year) || new Date().getFullYear();

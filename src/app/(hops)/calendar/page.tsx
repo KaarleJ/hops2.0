@@ -1,5 +1,5 @@
 import Calendar from "@/components/custom/Calendar";
-import { getCourses } from "@/db/db";
+import { getCourses } from "@/actions";
 
 export default async function CalendarPage({
   searchParams,

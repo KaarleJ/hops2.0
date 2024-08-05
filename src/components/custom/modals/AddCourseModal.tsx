@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { courseSchema } from "@/schemas/courseSchema";
+import { courseFormSchema } from "@/schemas/courseSchema";
 
 import {
   Modal,
@@ -14,15 +14,17 @@ import {
   ModalTitle,
   ModalTrigger,
 } from "../../ui/modal";
-import {
-  Form,
-} from "@/components/ui/form";
+import { Form, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import CourseFormFields from "../CourseFormFields";
+import { addCourse } from "@/actions";
+import { useState } from "react";
 
 export default function AddCourseForm() {
-  const form = useForm<z.infer<typeof courseSchema>>({
-    resolver: zodResolver(courseSchema),
+  const [open, setOpen] = useState(false);
+
+  const form = useForm<z.infer<typeof courseFormSchema>>({
+    resolver: zodResolver(courseFormSchema),
     defaultValues: {
       name: "",
       code: "",
@@ -33,11 +35,22 @@ export default function AddCourseForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof courseSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof courseFormSchema>) {
+    try {
+      await addCourse(values);
+      setOpen(false);
+    } catch (error) {
+      if (error instanceof Error) {
+        form.setError("root", {
+          type: "manual",
+          message: error.message,
+        });
+      }
+    }
   }
+
   return (
-    <Modal>
+    <Modal open={open} onOpenChange={setOpen}>
       <ModalTrigger asChild>
         <Button size="mini">Add Course</Button>
       </ModalTrigger>
@@ -53,6 +66,7 @@ export default function AddCourseForm() {
               <Button type="submit">Submit</Button>
               <ModalClose>Cancel</ModalClose>
             </div>
+            <FormMessage>{form.formState.errors.root?.message}</FormMessage>
           </form>
         </Form>
       </ModalContent>
