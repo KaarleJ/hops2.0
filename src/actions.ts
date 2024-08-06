@@ -1,13 +1,14 @@
 "use server";
 import { getServerSession } from "next-auth";
-import { FormCourse } from "../types";
+import { Course, FormCourse } from "../types";
 import { PrismaClient } from "@prisma/client";
 import { authOptions } from "../auth.config";
-import { revalidatePath } from 'next/cache'
+import { revalidatePath } from "next/cache";
+import { courseSchema } from "./schemas/courseSchema";
 
 const prisma = new PrismaClient();
 
-export async function getCourses(year: number) {
+export async function getCourses(year: number): Promise<Course[]> {
   const session = await getServerSession(authOptions);
   try {
     const courses = await prisma.course.findMany({
@@ -33,16 +34,18 @@ export async function addCourse({
   }
 
   try {
+    const rawCourse = {
+      name,
+      code,
+      ects: parseInt(ects),
+      year: parseInt(year),
+      startPeriod: parseInt(startPeriod),
+      endPeriod: parseInt(endPeriod),
+    };
+
+    const validatedCourse = courseSchema.parse(rawCourse);
     return await prisma.course.create({
-      data: {
-        name,
-        code,
-        ects: parseInt(ects),
-        year: parseInt(year),
-        startPeriod: parseInt(startPeriod),
-        endPeriod: parseInt(endPeriod),
-        authorId: session.user.id,
-      },
+      data: { ...validatedCourse, authorId: session.user.id },
     });
   } finally {
     await prisma.$disconnect();
@@ -63,16 +66,18 @@ export async function updateCourse(
   }
 
   try {
+    const rawCourse = {
+      name,
+      code,
+      ects: parseInt(ects),
+      year: parseInt(year),
+      startPeriod: parseInt(startPeriod),
+      endPeriod: parseInt(endPeriod),
+    };
+    const validatedCourse = courseSchema.parse(rawCourse);
     return await prisma.course.update({
       where: { id },
-      data: {
-        name,
-        code,
-        ects: parseInt(ects),
-        year: parseInt(year),
-        startPeriod: parseInt(startPeriod),
-        endPeriod: parseInt(endPeriod),
-      },
+      data: validatedCourse,
     });
   } finally {
     await prisma.$disconnect();
@@ -93,7 +98,7 @@ export async function deleteCourse(id: string) {
     await prisma.course.delete({
       where: { id },
     });
-    revalidatePath('/calendar')
+    revalidatePath("/calendar");
   } finally {
     await prisma.$disconnect();
   }
