@@ -12,7 +12,7 @@ export const courseFormSchema = z.object({
   endPeriod: z.string().regex(/^[0-5]$/, "Period must be between 0 and 5"),
 });
 
-export const CourseSchema = z
+export const courseSchema = z
   .object({
     name: z.string(),
     code: z.string(),

@@ -79,7 +79,7 @@ export default function useCourseMutate(course: Course) {
     resolver: zodResolver(courseFormSchema),
     defaultValues: {
       name: course.name,
-      code: course.code,
+      code: course.code as string | undefined,
       ects: course.ects.toString(),
       year: course.year.toString(),
       startPeriod: course.startPeriod.toString(),

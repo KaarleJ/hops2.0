@@ -1,11 +1,11 @@
 export interface Course {
   name: string;
-  code: string | undefined;
+  code: string | null | undefined;
   id: string;
   ects: number;
   year: number;
-  startPeriod: Period;
-  endPeriod: Period;
+  startPeriod: number;
+  endPeriod: number;
 }
 
 export interface FormCourse {
@@ -16,5 +16,3 @@ export interface FormCourse {
   startPeriod: string;
   endPeriod: string;
 }
-
-export type Period =  1 | 2 | 3 | 4 | 5;
