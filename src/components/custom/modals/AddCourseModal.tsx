@@ -1,10 +1,4 @@
 "use client";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { courseFormSchema } from "@/schemas/courseSchema";
-
 import {
   Modal,
   ModalClose,
@@ -17,37 +11,10 @@ import {
 import { Form, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import CourseFormFields from "../CourseFormFields";
-import { addCourse } from "@/actions";
-import { useState } from "react";
+import useCourse from "@/hooks/useCourse";
 
-export default function AddCourseForm() {
-  const [open, setOpen] = useState(false);
-
-  const form = useForm<z.infer<typeof courseFormSchema>>({
-    resolver: zodResolver(courseFormSchema),
-    defaultValues: {
-      name: "",
-      code: "",
-      ects: "0",
-      year: new Date().getFullYear().toString(),
-      startPeriod: "1",
-      endPeriod: "1",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof courseFormSchema>) {
-    try {
-      await addCourse(values);
-      setOpen(false);
-    } catch (error) {
-      if (error instanceof Error) {
-        form.setError("root", {
-          type: "manual",
-          message: error.message,
-        });
-      }
-    }
-  }
+export default function AddCourseForm({ year} : { year: number }) {
+  const { open, setOpen, form, onSubmit } = useCourse(year);
 
   return (
     <Modal open={open} onOpenChange={setOpen}>

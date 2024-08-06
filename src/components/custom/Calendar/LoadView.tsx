@@ -53,7 +53,7 @@ export default function LoadView({ courses }: { courses: Course[] }) {
     { name: "4", ects: aggregateToPeriod(courses, 4) },
   ];
   return (
-    <ChartContainer config={chartConfig} className="min-h-[50px] w-full h-full">
+    <ChartContainer config={chartConfig} className="min-h-[50px] w-full h-full" suppressHydrationWarning>
       <BarChart
         barCategoryGap={"30%"}
         margin={{ top: 50, bottom: 50 }}

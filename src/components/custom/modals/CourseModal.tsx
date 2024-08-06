@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "../../ui/button";
 import {
   Modal,
@@ -15,11 +14,7 @@ import {
 import { Course } from "../../../../types";
 import { Form } from "@/components/ui/form";
 import CourseFormFields from "../CourseFormFields";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { courseFormSchema } from "@/schemas/courseSchema";
-import { z } from "zod";
-import { deleteCourse } from "@/actions";
+import useCourse from "@/hooks/useCourseMutate";
 
 interface CourseModalProps {
   course: Course;
@@ -27,22 +22,13 @@ interface CourseModalProps {
 }
 
 export default function CourseModal({ course, children }: CourseModalProps) {
-  const [edit, setEdit] = useState(false);
-
-  const form = useForm<z.infer<typeof courseFormSchema>>({
-    resolver: zodResolver(courseFormSchema),
-    defaultValues: {
-      name: course.name,
-      code: course.code,
-      ects: course.ects.toString(),
-      year: course.year.toString(),
-      startPeriod: course.startPeriod.toString(),
-      endPeriod: course.endPeriod.toString(),
-    },
-  });
+  const { open, edit, setEdit, onUpdate, onDelete, toggleModal, form } = useCourse(course);
 
   return (
-    <Modal onOpenChange={() => setEdit(false)}>
+    <Modal
+      open={open}
+      onOpenChange={toggleModal}
+    >
       <ModalTrigger asChild className="hover:cursor-pointer">
         {children}
       </ModalTrigger>
@@ -54,7 +40,10 @@ export default function CourseModal({ course, children }: CourseModalProps) {
         <ModalBody>
           {edit ? (
             <Form {...form}>
-              <form action={() => deleteCourse(course.id)} className="space-y-8">
+              <form
+                onSubmit={form.handleSubmit(onUpdate)}
+                className="space-y-8"
+              >
                 <CourseFormFields form={form} />
                 <div className="flex flex-row justify-between">
                   <Button type="submit">Submit</Button>
@@ -82,11 +71,9 @@ export default function CourseModal({ course, children }: CourseModalProps) {
           <div className="flex justify-between">
             <div className="flex">
               <Button onClick={() => setEdit(true)}>Edit</Button>
-              <form className="ml-6" action={() => console.log("delete")}>
-                <Button type="submit" variant="destructive">
-                  Delete
-                </Button>
-              </form>
+              <Button onClick={onDelete} variant="destructive" className="ml-6">
+                Delete
+              </Button>
             </div>
             <ModalClose>Close</ModalClose>
           </div>
