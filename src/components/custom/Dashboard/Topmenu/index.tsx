@@ -70,7 +70,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         >
           <ChevronRight size={22} />
         </Button>
-        <AddCourseModal />
+        <AddCourseModal year={year}/>
       </div>
     </div>
   );
