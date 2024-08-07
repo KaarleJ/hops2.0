@@ -1,6 +1,6 @@
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addCourse } from "@/actions";
 import { z } from "zod";
 import { courseFormSchema } from "@/schemas/courseSchema";
@@ -24,6 +24,17 @@ export default function useCourse(year: number) {
       endPeriod: "1",
     },
   });
+  
+  useEffect(() => {
+    form.reset({
+      name: "",
+      code: "",
+      ects: "0",
+      year: year.toString(),
+      startPeriod: "1",
+      endPeriod: "1",
+    });
+  }, [year, form]);
 
   async function onSubmit(values: z.infer<typeof courseFormSchema>) {
     try {
@@ -44,8 +55,5 @@ export default function useCourse(year: number) {
       setLoading(false);
     }
   }
-
-  
-
   return { open, setOpen, loading, form, onSubmit };
 }
