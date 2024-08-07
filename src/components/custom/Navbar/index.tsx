@@ -1,11 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import AvatarMenu from "./AvatarMenu";
 import MobileMenu from "./MobileMenu";
-import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 
-export default async function Navbar() {
-  const session = await getServerSession();
+export default function Navbar() {
+  const { data: session} = useSession();
   return (
     <div className="px-2 py-4 md:px-24 md:py-6 w-screen fixed top-0 left-0 z-50">
       <nav className="py-2 px-8 md:px-36 bg-primary shadow-xl rounded-full text-lg text-primary-foreground flex flex-row justify-between items-center md:mr-4 z-50">

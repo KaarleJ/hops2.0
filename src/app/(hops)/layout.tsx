@@ -1,5 +1,6 @@
 import Navbar from "@/components/custom/Navbar";
 import Footer from "@/components/custom/Footer";
+import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -9,7 +10,7 @@ export default function RootLayout({
   return (
     <>
       <Navbar />
-      {children}
+      <Suspense>{children}</Suspense>
       <Footer />
     </>
   );
