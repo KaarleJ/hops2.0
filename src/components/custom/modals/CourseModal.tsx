@@ -15,6 +15,7 @@ import { Course } from "../../../../types";
 import { Form } from "@/components/ui/form";
 import CourseFormFields from "../CourseFormFields";
 import useCourse from "@/hooks/useCourseMutate";
+import { LoaderCircle } from "lucide-react";
 
 interface CourseModalProps {
   course: Course;
@@ -22,13 +23,19 @@ interface CourseModalProps {
 }
 
 export default function CourseModal({ course, children }: CourseModalProps) {
-  const { open, edit, setEdit, onUpdate, onDelete, toggleModal, form } = useCourse(course);
+  const {
+    open,
+    edit,
+    setEdit,
+    loading,
+    onUpdate,
+    onDelete,
+    toggleModal,
+    form,
+  } = useCourse(course);
 
   return (
-    <Modal
-      open={open}
-      onOpenChange={toggleModal}
-    >
+    <Modal open={open} onOpenChange={toggleModal}>
       <ModalTrigger asChild className="hover:cursor-pointer">
         {children}
       </ModalTrigger>
@@ -46,7 +53,17 @@ export default function CourseModal({ course, children }: CourseModalProps) {
               >
                 <CourseFormFields form={form} />
                 <div className="flex flex-row justify-between">
-                  <Button type="submit">Submit</Button>
+                  <div className="flex items-center">
+                    <Button type="submit" disabled={loading}>
+                      Submit
+                    </Button>
+                    {loading && (
+                      <LoaderCircle
+                        className="animate-spin justify-self-start m-2"
+                        size={24}
+                      />
+                    )}
+                  </div>
                   <ModalClose>Cancel</ModalClose>
                 </div>
               </form>
@@ -71,9 +88,20 @@ export default function CourseModal({ course, children }: CourseModalProps) {
           <div className="flex justify-between">
             <div className="flex">
               <Button onClick={() => setEdit(true)}>Edit</Button>
-              <Button onClick={onDelete} variant="destructive" className="ml-6">
+              <Button
+                onClick={onDelete}
+                disabled={loading}
+                variant="destructive"
+                className="ml-6"
+              >
                 Delete
               </Button>
+              {loading && (
+                <LoaderCircle
+                  className="animate-spin justify-self-start m-2"
+                  size={24}
+                />
+              )}
             </div>
             <ModalClose>Close</ModalClose>
           </div>

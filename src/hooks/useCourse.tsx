@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function useCourse(year: number) {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
@@ -26,6 +27,7 @@ export default function useCourse(year: number) {
 
   async function onSubmit(values: z.infer<typeof courseFormSchema>) {
     try {
+      setLoading(true);
       await addCourse(values);
       setOpen(false);
       router.refresh();
@@ -33,15 +35,17 @@ export default function useCourse(year: number) {
         title: `${values.code} ${values.name}`,
         description: "Course added!",
       });
+      setLoading(false);
     } catch (error: any) {
       form.setError("root", {
         type: "manual",
         message: error.message,
       });
+      setLoading(false);
     }
   }
 
   
 
-  return { open, setOpen, form, onSubmit };
+  return { open, setOpen, loading, form, onSubmit };
 }
