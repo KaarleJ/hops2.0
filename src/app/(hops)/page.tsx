@@ -30,17 +30,29 @@ export default function Home() {
       </div>
 
       <div className="px-4 md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-full">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-        venenatis, nunc nec tincidunt fermentum, nunc felis bibendum nisl, nec
-        fermentum nunc dolor sit amet justo. Donec nec tortor nec lacus
-        pellentesque ultricies. Nullam nec justo nec nunc fermentum malesuada.
-        Donec eget velit at nunc tincidunt fermentum. Nullam nec justo nec nunc
-        fermentum malesuada. Donec eget velit at nunc tincidunt fermentum.
-        Nullam nec justo nec nunc fermentum malesuada. Donec eget velit at nunc
-        tincidunt fermentum. Nullam nec justo nec nunc fermentum malesuada.
-        Donec eget velit at nunc tincidunt fermentum. Nullam nec justo nec nunc
-        fermentum malesuada. Donec eget velit at nunc tincidunt fermentum.
-        Nullam
+        <h2 className="py-4">Your Ultimate Academic Planner</h2>
+        HopsApp, the innovative calendar app designed specifically
+        for academic students. Effortlessly plan and
+        manage your university courses, ensuring you stay on top of your
+        academic schedule.
+        <h3 className="pt-8">Features:</h3>
+        <ul className="py-4">
+          <li>
+            <span className="font-bold">University Periods:</span> Easily organize your calendar by
+            university periods, making it simple to track your academic
+            timeline.
+          </li>
+          <li>
+            <span className="font-bold">Course Management:</span> Add, view, and manage your courses
+            with ease. Place them on your calendar and get a clear overview of
+            your academic commitments.
+          </li>
+          <li>
+            <span className="font-bold">Intuitive Planning:</span> Our user-friendly interface allows
+            you to plan your studies efficiently, helping you balance your
+            coursework and personal life.
+          </li>
+        </ul>
       </div>
     </main>
   );
