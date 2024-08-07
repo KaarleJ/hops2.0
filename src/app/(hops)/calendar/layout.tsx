@@ -1,5 +1,7 @@
 "use client";
 import Dashboard from "@/components/custom/Dashboard";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -10,6 +12,7 @@ export default function CalendarPageLayout({
 }) {
   const search = useSearchParams();
   const path = usePathname();
+  const { data: session } = useSession();
 
   const isCalendar = path === "/calendar";
   const key = JSON.stringify(Object.fromEntries(search.entries()));
@@ -20,9 +23,22 @@ export default function CalendarPageLayout({
         <h1>Calendar</h1>
         <Dashboard>
           <Suspense key={key}>
-            <div className={`${isCalendar && 'flex flex-col-reverse justify-between'} h-full`}>
+            <div
+              className={`${
+                isCalendar && "flex flex-col-reverse justify-between"
+              } h-full`}
+            >
               {isCalendar && <CalendarFooter />}
-              {children}
+              {session ? (
+                children
+              ) : (
+                <h3 className="p-6">
+                  Start by{" "}
+                  <Link href="/auth/signin" className="underline">
+                    signin in
+                  </Link>
+                </h3>
+              )}
             </div>
           </Suspense>
         </Dashboard>
