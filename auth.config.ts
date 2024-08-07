@@ -1,13 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
-
-const github_id = process.env.GITHUB_ID;
-const github_secret = process.env.GITHUB_SECRET;
-
-if (!github_id || !github_secret) {
-  throw new Error("GITHUB_ID and GITHUB_SECRET must be set");
-}
 
 const prisma = new PrismaClient();
 
@@ -60,8 +54,12 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GithubProvider({
-      clientId: github_id,
-      clientSecret: github_secret,
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
     }),
   ],
   pages: {

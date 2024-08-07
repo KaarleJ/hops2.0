@@ -24,7 +24,7 @@ export default function SignInCard({ providers }: SignInCardProps) {
       </CardHeader>
       <CardContent>
         {Object.values(providers ?? []).map((provider) => (
-          <div key={provider.name}>
+          <div key={provider.name} className="mt-4">
             <Button onClick={() => signIn(provider.id)}>
               Sign in with {provider.name} {ProviderIcon(provider.name)}
             </Button>
