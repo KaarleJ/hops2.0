@@ -13,6 +13,7 @@ export default function CalendarPageLayout({
   const search = useSearchParams();
   const path = usePathname();
   const { data: session } = useSession();
+  const show5th = search.get("show5th") === "true";
 
   const isCalendar = path === "/calendar";
   const key = JSON.stringify(Object.fromEntries(search.entries()));
@@ -28,7 +29,7 @@ export default function CalendarPageLayout({
                 isCalendar && "flex flex-col-reverse justify-between"
               } h-full`}
             >
-              {isCalendar && <CalendarFooter />}
+              {isCalendar && <CalendarFooter show5th={show5th} />}
               {session ? (
                 children
               ) : (
@@ -47,13 +48,21 @@ export default function CalendarPageLayout({
   );
 }
 
-function CalendarFooter() {
+function CalendarFooter({ show5th }: { show5th?: boolean }) {
   return (
-    <div className="grid grid-cols-4 text-center border-t border-accent px-4">
+    <div
+      data-show={show5th}
+      className="grid grid-cols-4 border-t border-accent data-[show=true]:grid-cols-5 text-center w-full"
+    >
       <p className="py-2">1st period</p>
       <p className="border-x border-accent py-2">2nd period</p>
-      <p className="border-x border-accent py-2">3rd period</p>
-      <p className="py-2">4th period</p>
+      <p className="py-2">3rd period</p>
+      <p className={`border-accent py-2 ${show5th ? "border-x" : "border-l"}`}>
+        4th period
+      </p>
+      <p data-show={show5th} className={`py-2 ${!show5th && "hidden"}`}>
+        5th period
+      </p>
     </div>
   );
 }

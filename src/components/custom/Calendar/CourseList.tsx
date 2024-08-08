@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import CourseModal from "../modals/CourseModal";
 
-export default function CourseList({ courses }: { courses: Course[] }) {
+export default function CourseList({ courses, show5th }: { courses: Course[], show5th: boolean }) {
   return (
     <Table>
       {courses.length === 0 && (

@@ -1,4 +1,3 @@
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   ChevronFirst,
@@ -13,6 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import AddCourseModal from "../../modals/AddCourseModal";
+import { useParams } from "@/hooks/useParams";
 
 interface TopMenuProps {
   collapsed: boolean;
@@ -20,16 +20,15 @@ interface TopMenuProps {
 }
 
 export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const search = useSearchParams();
+  const { setParam, search } = useParams();
   const year = parseInt(
     search.get("year") || new Date().getFullYear().toString()
   );
 
-  const setYear = (year: number) => {
-    router.push(pathname + "?year=" + year);
-  };
+  function toggle5th() {
+    const current = search.get("show5th") === "true";
+    setParam("show5th", !current);
+  }
 
   return (
     <div className="flex flex-row items-center justify-between border-l border-accent">
@@ -53,11 +52,14 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         </TooltipProvider>
       </div>
       <div className="col-start-2 flex flex-row items-center justify-center p-2">
+        <Button size="mini" variant="outline" onClick={toggle5th}>
+          Toggle 5th period
+        </Button>
         <Button
           size="mini"
           variant="ghost"
           className="md:mx-6 text-primary"
-          onClick={() => setYear(year - 1)}
+          onClick={() => setParam("year", year - 1)}
         >
           <ChevronLeft size={22} />
         </Button>
@@ -66,11 +68,11 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
           size="mini"
           variant="ghost"
           className="md:mx-6 text-primary"
-          onClick={() => setYear(year + 1)}
+          onClick={() => setParam("year", year + 1)}
         >
           <ChevronRight size={22} />
         </Button>
-        <AddCourseModal year={year}/>
+        <AddCourseModal year={year} />
       </div>
     </div>
   );

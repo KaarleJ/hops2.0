@@ -15,7 +15,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-
 // This function calculates the total ECTS load for a given period
 const aggregateToPeriod = (courses: Course[], period: number) => {
   // filter courses that start on the given period, but do not span
@@ -42,7 +41,13 @@ const aggregateToPeriod = (courses: Course[], period: number) => {
   return combinedCourses.reduce((acc, course) => acc + course.ects, 0);
 };
 
-export default function LoadView({ courses }: { courses: Course[] }) {
+export default function LoadView({
+  courses,
+  show5th,
+}: {
+  courses: Course[];
+  show5th: boolean;
+}) {
   const periods = [
     {
       name: "1",
@@ -52,8 +57,13 @@ export default function LoadView({ courses }: { courses: Course[] }) {
     { name: "3", ects: aggregateToPeriod(courses, 3) },
     { name: "4", ects: aggregateToPeriod(courses, 4) },
   ];
+  show5th && periods.push({ name: "5", ects: aggregateToPeriod(courses, 5) });
   return (
-    <ChartContainer config={chartConfig} className="min-h-[50px] w-full h-full" suppressHydrationWarning>
+    <ChartContainer
+      config={chartConfig}
+      className="min-h-[50px] w-full h-full"
+      suppressHydrationWarning
+    >
       <BarChart
         barCategoryGap={"30%"}
         margin={{ top: 50, bottom: 50 }}

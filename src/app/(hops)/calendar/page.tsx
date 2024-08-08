@@ -7,7 +7,8 @@ export default async function CalendarPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const year = Number(searchParams.year) || new Date().getFullYear();
+  const show5th = searchParams.show5th === "true";
   const courses = await getCourses(year);
 
-  return <Calendar courses={courses} />;
+  return <Calendar courses={courses} show5th={show5th} />;
 }
