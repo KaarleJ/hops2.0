@@ -24,7 +24,7 @@ export default function Calendar({
         }
         // We apply grid attributes by using style prop since tailwind has bugs with grid
         return (
-          <CourseModal course={course} key={course.name}>
+          <CourseModal course={course} key={course.id}>
             <Button
               size="dense"
               className=""
