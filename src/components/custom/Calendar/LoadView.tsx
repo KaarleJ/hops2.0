@@ -6,7 +6,15 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Course } from "../../../../types";
-import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Label,
+  XAxis,
+  YAxis,
+  Text,
+} from "recharts";
 
 const chartConfig = {
   desktop: {
@@ -58,6 +66,8 @@ export default function LoadView({
     { name: "4", ects: aggregateToPeriod(courses, 4) },
   ];
   show5th && periods.push({ name: "5", ects: aggregateToPeriod(courses, 5) });
+  const totalEcts = periods.reduce((acc, period) => acc + period.ects, 0);
+  const totalCourses = courses.length;
   return (
     <ChartContainer
       config={chartConfig}
@@ -65,7 +75,7 @@ export default function LoadView({
       suppressHydrationWarning
     >
       <BarChart
-        barCategoryGap={"30%"}
+        barCategoryGap={"35%"}
         margin={{ top: 50, bottom: 50 }}
         accessibilityLayer
         data={periods}
@@ -82,9 +92,21 @@ export default function LoadView({
           tickFormatter={(value) => value.slice(0, 3)}
         >
           <Label value="Period" position="bottom" offset={10} />
+
+          <Label
+            value={`Total courses: ${totalCourses}`}
+            position="insideTopLeft"
+            offset={40}
+          />
+          <Label
+            value={`Total ECTS: ${totalEcts}`}
+            position="insideTopRight"
+            offset={40}
+          />
         </XAxis>
         <ChartTooltip content={<ChartTooltipContent />} />
         <Bar dataKey="ects" fill={chartConfig.desktop.color} radius={8} />
+        <Text>Total: 20</Text>
       </BarChart>
     </ChartContainer>
   );
