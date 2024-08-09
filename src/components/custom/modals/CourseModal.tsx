@@ -39,53 +39,46 @@ export default function CourseModal({ course, children }: CourseModalProps) {
       <ModalTrigger asChild className="hover:cursor-pointer">
         {children}
       </ModalTrigger>
-      <ModalContent>
+      <ModalContent className="p-4">
         <ModalHeader>
           <ModalTitle>{course.name}</ModalTitle>
           <ModalDescription>{course.code}</ModalDescription>
         </ModalHeader>
-        <ModalBody>
-          {edit ? (
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onUpdate)}
-                className="space-y-8"
-              >
-                <CourseFormFields form={form} />
-                <div className="flex flex-row justify-between">
-                  <div className="flex items-center">
-                    <Button type="submit" disabled={loading}>
-                      Submit
-                    </Button>
-                    {loading && (
-                      <LoaderCircle
-                        className="animate-spin justify-self-start m-2"
-                        size={24}
-                      />
-                    )}
-                  </div>
-                  <ModalClose>Cancel</ModalClose>
+        {edit ? (
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onUpdate)} className="space-y-8">
+              <CourseFormFields form={form} />
+              <div className="flex flex-row justify-between">
+                <div className="flex items-center">
+                  <Button type="submit" disabled={loading}>
+                    Submit
+                  </Button>
+                  {loading && (
+                    <LoaderCircle
+                      className="animate-spin justify-self-start m-2"
+                      size={24}
+                    />
+                  )}
                 </div>
-              </form>
-            </Form>
-          ) : (
-            <>
-              <div className="py-4">
-                <p>Year: {course.year}</p>
-                <p>Start period: {course.startPeriod}</p>
-                <p>End period: {course.endPeriod}</p>
+                <ModalClose>Cancel</ModalClose>
               </div>
-              <div className="py-4">
-                <p>ECTS: {course.ects}</p>
-                <p>
-                  Length: {course.endPeriod - course.startPeriod + 1} periods
-                </p>
-              </div>
-            </>
-          )}
-        </ModalBody>
+            </form>
+          </Form>
+        ) : (
+          <>
+            <div className="py-4">
+              <p>Year: {course.year}</p>
+              <p>Start period: {course.startPeriod}</p>
+              <p>End period: {course.endPeriod}</p>
+            </div>
+            <div className="py-4">
+              <p>ECTS: {course.ects}</p>
+              <p>Length: {course.endPeriod - course.startPeriod + 1} periods</p>
+            </div>
+          </>
+        )}
         {!edit && (
-          <div className="flex justify-between">
+          <div className="flex justify-between pt-4">
             <div className="flex">
               <Button onClick={() => setEdit(true)}>Edit</Button>
               <Button

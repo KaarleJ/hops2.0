@@ -20,9 +20,9 @@ export default function AddCourseForm({ year }: { year: number }) {
   return (
     <Modal open={open} onOpenChange={setOpen}>
       <ModalTrigger asChild>
-        <Button size="mini">Add Course</Button>
+        <Button size="mini" className="w-24">Add Course</Button>
       </ModalTrigger>
-      <ModalContent>
+      <ModalContent className="p-4">
         <ModalHeader>
           <ModalTitle>Add course</ModalTitle>
           <ModalDescription>Add a new course to your HOPS</ModalDescription>
