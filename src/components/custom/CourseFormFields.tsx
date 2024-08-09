@@ -95,6 +95,13 @@ export default function CourseFormFields({ form }: CourseFormFieldsProps) {
                   min={1}
                   max={5}
                   {...field}
+                  onChange={(e) => {
+                    const endValue = form.getValues("endPeriod");
+                    if (e.target.value > endValue) {
+                      form.setValue("endPeriod", e.target.value);
+                    }
+                    form.setValue("startPeriod", e.target.value);
+                  }}
                 />
               </FormControl>
               <FormMessage />
@@ -114,6 +121,13 @@ export default function CourseFormFields({ form }: CourseFormFieldsProps) {
                   min={1}
                   max={5}
                   {...field}
+                  onChange={(e) => {
+                    const startValue = form.getValues("startPeriod");
+                    if (e.target.value < startValue) {
+                      form.setValue("startPeriod", e.target.value);
+                    }
+                    form.setValue("endPeriod", e.target.value);
+                  }}
                 />
               </FormControl>
               <FormMessage />
