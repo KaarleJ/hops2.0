@@ -31,8 +31,8 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
   }
 
   return (
-    <div className="flex flex-row items-center justify-between border-l border-accent">
-      <div className="col-start-1 flex items-center text-primary">
+    <div className="flex flex-row items-center justify-center md:justify-between md:border-l border-accent">
+      <div className="hidden md:flex items-center text-primary">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -51,9 +51,9 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="col-start-2 flex flex-row items-center justify-center p-2">
-        <Button size="mini" variant="outline" onClick={toggle5th}>
-          Toggle 5th period
+      <div className="flex flex-row items-center justify-between p-2 w-full md:w-min">
+        <Button size="mini" variant="outline" onClick={toggle5th} className="w-24">
+          5th period
         </Button>
         <Button
           size="mini"

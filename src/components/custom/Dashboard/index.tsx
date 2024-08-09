@@ -9,12 +9,12 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false); // controls the side menu collapse
 
   return (
-    <div className="w-full h-[32rem] my-6 border border-border rounded-sm flex flex-row justify-start items-stretch relative">
+    <div className="w-full h-[40rem] my-6 border border-border rounded-sm flex flex-row justify-start items-stretch relative">
       <SideMenu collapsed={collapsed} />
       <div className="w-full h-full rounded-sm flex flex-col justify-start">
         <TopMenu collapsed={collapsed} setCollapsed={setCollapsed} />
         <Separator />
-        <div className="border-l border-accent h-full max-h-max overflow-y-auto">{children}</div>
+        <div className="border-l border-accent h-full max-h-max overflow-x-scroll md:overflow-x-hidden overflow-y-auto">{children}</div>
       </div>
     </div>
   );

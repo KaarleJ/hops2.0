@@ -9,7 +9,7 @@ interface SideMenuProps {
 export default function SideMenu({ collapsed }: SideMenuProps) {
   return (
     <div
-      className={`h-full flex flex-col items-stretch justify-start transition-all duration-500 ${
+      className={`h-full hidden md:flex flex-col items-stretch justify-start transition-all duration-500 ${
         collapsed ? "w-10" : "w-44"
       }`}
     >
