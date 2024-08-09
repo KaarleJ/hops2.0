@@ -57,7 +57,7 @@ export default function CourseFormFields({ form }: CourseFormFieldsProps) {
           control={form.control}
           name="ects"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="w-full pr-3">
               <FormLabel>ECTS</FormLabel>
               <FormControl>
                 <Input type="number" placeholder="ects..." min={0} {...field} />
@@ -70,7 +70,7 @@ export default function CourseFormFields({ form }: CourseFormFieldsProps) {
           control={form.control}
           name="year"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="w-full pl-3">
               <FormLabel>year</FormLabel>
               <FormControl>
                 <Input type="number" placeholder="year..." {...field} />
