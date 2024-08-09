@@ -19,15 +19,15 @@ export default function CalendarPageLayout({
   const key = JSON.stringify(Object.fromEntries(search.entries()));
 
   return (
-    <div className="mt-28 flex min-h-screen flex-col items-center justify-start">
-      <div className="px-4 md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-full">
+    <div className="mt-24 flex min-h-screen flex-col items-center justify-start">
+      <div className="md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-full">
         <h1>Calendar</h1>
         <Dashboard>
           <Suspense key={key}>
             <div
               className={`${
                 isCalendar && "flex flex-col-reverse justify-between"
-              } h-full max-h-max overflow-y-auto`}
+              } h-full max-h-max overflow-x-scroll md:overflow-hidden overflow-y-auto`}
             >
               {isCalendar && <CalendarFooter show5th={show5th} />}
               {session ? (
@@ -52,7 +52,7 @@ function CalendarFooter({ show5th }: { show5th?: boolean }) {
   return (
     <div
       data-show={show5th}
-      className="grid grid-cols-4 border-t border-accent data-[show=true]:grid-cols-5 text-center w-full"
+      className="grid grid-cols-4 border-t border-accent data-[show=true]:grid-cols-5 text-center w-full min-w-[50rem] md:min-w-min"
     >
       <p className="py-2">1st period</p>
       <p className="border-x border-accent py-2">2nd period</p>

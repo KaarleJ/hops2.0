@@ -16,7 +16,7 @@ export default function Calendar({
   return (
     <div
       data-show={show5th}
-      className="grid grid-cols-4 data-[show=true]:grid-cols-5 transition-all duration-slowest ease grid-flow-row-dense gap-4 p-4"
+      className="grid grid-cols-4 data-[show=true]:grid-cols-5 transition-all duration-slowest ease grid-flow-row-dense gap-4 p-4 min-w-[50rem] md:min-w-min"
     >
       {courses.map((course) => {
         if (!show5th && course.startPeriod > 4) {

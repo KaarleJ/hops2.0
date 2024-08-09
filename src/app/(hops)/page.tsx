@@ -16,7 +16,7 @@ export default function Home() {
           className="object-cover w-screen max-h-96"
         />
       </div>
-      <div className="w-full bg-primary bg-gradient-to-r from-primary to-violet-500 px-10 md:px-28 py-6 md:py-10 text-primary-foreground">
+      <div className="w-full bg-primary bg-gradient-to-r from-primary to-violet-500 px-4 md:px-28 py-6 md:py-10 text-primary-foreground">
         <h1 className="text-left mb-2 md:mb-6">HopsApp</h1>
         <h2 className="mt-2 md:mt-6">
           A new and intuitive way to plan your studies
