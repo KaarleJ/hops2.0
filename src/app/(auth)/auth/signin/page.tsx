@@ -4,9 +4,6 @@ import { authOptions } from "../../../../../auth.config";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export const dynamic = "force-static";
-export const revalidate = 300;
-
 export default async function SignIn() {
   const session = await getServerSession(authOptions);
   const providers = await getProviders();
