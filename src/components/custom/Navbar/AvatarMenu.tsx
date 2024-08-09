@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function AvatarMenu({ src }: { src: string | undefined }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="rounded-full ml-6">
+      <DropdownMenuTrigger className="rounded-full ml-3">
         <Avatar>
           <AvatarImage src={src}/>
           <AvatarFallback>Avatar</AvatarFallback>
