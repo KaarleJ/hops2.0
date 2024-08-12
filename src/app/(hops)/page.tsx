@@ -25,7 +25,7 @@ export default function Home() {
           asChild
           className="bg-gradient-to-r from-purple-600 to-violet-600 shadow-md mt-6 hover:brightness-90"
         >
-          <Link href="/api/auth/signin">Get started</Link>
+          <Link href="/calendar">Get started</Link>
         </Button>
       </div>
 
