@@ -31,27 +31,25 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
   }
 
   return (
-    <div className="flex flex-row items-center justify-center md:justify-between md:border-l border-accent">
-      <div className="hidden md:flex items-center text-primary">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="mini"
-                onClick={() => setCollapsed(!collapsed)}
-                className="px-0 py-2"
-              >
-                {collapsed ? <ChevronLast /> : <ChevronFirst />}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="right">
-              <p>Toggle sidemenu</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
-      <div className="flex flex-row items-center justify-end p-2 w-full md:w-min">
+    <div className="flex flex-row items-center justify-between md:border-l border-accent w-full">
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="mini"
+              onClick={() => setCollapsed(!collapsed)}
+              className="px-0 py-2 opacity-0 md:opacity-100 w-24 md:w-min text-primary"
+            >
+              {collapsed ? <ChevronLast /> : <ChevronFirst />}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>Toggle sidemenu</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <div className="flex flex-row items-center justify-end p-2 md:w-min">
         <Button
           size="mini"
           variant="ghost"
@@ -73,11 +71,19 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
           size="mini"
           variant="outline"
           onClick={toggle5th}
-          className="w-24 text-foreground"
+          className="w-24 text-foreground hidden md:flex"
         >
           5th period
         </Button>
       </div>
+      <Button
+        size="mini"
+        variant="outline"
+        onClick={toggle5th}
+        className="w-24 text-foreground md:hidden pr-2"
+      >
+        5th period
+      </Button>
     </div>
   );
 }
