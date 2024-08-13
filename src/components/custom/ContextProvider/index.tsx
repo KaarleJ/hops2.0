@@ -2,6 +2,7 @@ import ThemeProvider from "./ThemeProvider";
 import AuthProvider from "./AuthProvider";
 import ProgressBar from "./ProgressBar";
 import { Toaster } from "@/components/ui/toaster";
+import DndContext from "./DndContext";
 
 export default function ContextProvider({
   children,
@@ -22,7 +23,7 @@ export default function ContextProvider({
           options={{ showSpinner: false }}
           shallowRouting
         />
-        {children}
+        <DndContext>{children}</DndContext>
         <Toaster />
       </ThemeProvider>
     </AuthProvider>

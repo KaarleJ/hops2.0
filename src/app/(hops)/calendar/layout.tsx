@@ -52,7 +52,7 @@ function CalendarFooter({ show5th }: { show5th?: boolean }) {
   return (
     <div
       data-show={show5th}
-      className="grid grid-cols-4 border-t border-accent data-[show=true]:grid-cols-5 text-center w-full min-w-[50rem] md:min-w-min"
+      className="grid grid-cols-4 border-t border-accent data-[show=true]:grid-cols-5 text-center w-full min-w-[50rem] md:min-w-min z-30 bg-background"
     >
       <p className="py-2">1st period</p>
       <p className="border-x border-accent py-2">2nd period</p>

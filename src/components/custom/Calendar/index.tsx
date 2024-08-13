@@ -1,13 +1,17 @@
-import { Course } from "../../../../types";
 import { Button } from "@/components/ui/button";
+import { Course } from "../../../../types";
+import DraggableCourse from "@/components/DraggableCourse";
 import CourseModal from "../modals/CourseModal";
+import DroppableColumns from "./DroppableColumns";
 
 export default function Calendar({
   courses,
   show5th,
+  drag,
 }: {
   courses: Course[];
   show5th: boolean;
+  drag: boolean;
 }) {
   if (courses.length === 0) {
     return <p className="p-12">No courses added yet</p>;
@@ -16,12 +20,17 @@ export default function Calendar({
   return (
     <div
       data-show={show5th}
-      className="grid grid-cols-4 data-[show=true]:grid-cols-5 transition-all duration-slowest ease grid-flow-row-dense gap-4 p-4 min-w-[50rem] md:min-w-min"
+      className="grid grid-cols-4 data-[show=true]:grid-cols-5 grid-flow-row-dense gap-4 p-4 min-w-[50rem] md:min-w-min"
     >
       {courses.map((course) => {
         if (!show5th && course.startPeriod > 4) {
           return null;
         }
+
+        if (drag) {
+          return <DraggableCourse course={course} key={course.id} />;
+        }
+
         // We apply grid attributes by using style prop since tailwind has bugs with grid
         return (
           <CourseModal course={course} key={course.id}>
@@ -41,6 +50,7 @@ export default function Calendar({
           </CourseModal>
         );
       })}
+      {drag && <DroppableColumns show5th={show5th}/>}
     </div>
   );
 }
