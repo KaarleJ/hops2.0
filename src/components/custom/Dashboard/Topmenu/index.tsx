@@ -11,7 +11,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import AddCourseModal from "../../modals/AddCourseModal";
 import { useParams } from "@/hooks/useParams";
 
 interface TopMenuProps {
@@ -21,6 +20,7 @@ interface TopMenuProps {
 
 export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
   const { setParam, search } = useParams();
+
   const year = parseInt(
     search.get("year") || new Date().getFullYear().toString()
   );
@@ -51,10 +51,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="flex flex-row items-center justify-between p-2 w-full md:w-min">
-        <Button size="mini" variant="outline" onClick={toggle5th} className="w-24">
-          5th period
-        </Button>
+      <div className="flex flex-row items-center justify-end p-2 w-full md:w-min">
         <Button
           size="mini"
           variant="ghost"
@@ -72,7 +69,14 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         >
           <ChevronRight size={22} />
         </Button>
-        <AddCourseModal year={year} />
+        <Button
+          size="mini"
+          variant="outline"
+          onClick={toggle5th}
+          className="w-24 text-foreground"
+        >
+          5th period
+        </Button>
       </div>
     </div>
   );

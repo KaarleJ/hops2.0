@@ -12,15 +12,22 @@ import { Form, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import CourseFormFields from "../CourseFormFields";
 import useCourse from "@/hooks/useCourse";
-import { LoaderCircle } from "lucide-react";
+import { LoaderCircle, Plus } from "lucide-react";
+import { useParams } from "@/hooks/useParams";
 
-export default function AddCourseForm({ year }: { year: number }) {
+export default function AddCourseForm() {
+  const { search } = useParams();
+  const year = parseInt(
+    search.get("year") || new Date().getFullYear().toString()
+  );
   const { open, setOpen, loading, form, onSubmit } = useCourse(year);
 
   return (
     <Modal open={open} onOpenChange={setOpen}>
       <ModalTrigger asChild>
-        <Button size="mini" className="w-24">Add Course</Button>
+        <Button size="circle" className="m-2">
+          <Plus size={22} />
+        </Button>
       </ModalTrigger>
       <ModalContent className="p-4">
         <ModalHeader>
