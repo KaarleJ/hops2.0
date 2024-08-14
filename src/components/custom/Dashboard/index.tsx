@@ -12,7 +12,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <div className="w-full h-[40rem] my-6 border border-border rounded-sm flex flex-row justify-start items-stretch relative">
+    <div className="w-full h-[50rem] md:h-[40rem] md:my-6 border border-border rounded-sm flex flex-row justify-start items-stretch relative">
       <SideMenu collapsed={collapsed} />
       <div className="w-full h-full rounded-sm flex flex-col justify-start">
         <TopMenu

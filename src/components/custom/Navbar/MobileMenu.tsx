@@ -13,7 +13,7 @@ import { Session } from "next-auth";
 import { MenuIcon, HomeIcon, CalendarDays, List, BarChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function MobileMenu({ session }: { session: Session | null }) {
+export default function MobileMenu({ session, title }: { session: Session | null, title: string }) {
   return (
     <div className="flex items-center text-left md:hidden w-24">
       <Sheet>

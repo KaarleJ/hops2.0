@@ -19,8 +19,8 @@ export default function CalendarPageLayout({
   const key = JSON.stringify(Object.fromEntries(search.entries()));
 
   return (
-    <div className="mt-24 flex min-h-screen flex-col items-center justify-start">
-      <div className="md:px-28 py-6 md:py-24 flex flex-col justify-start items-start w-full">
+    <div className="md:mt-24 flex flex-col items-center justify-start">
+      <div className="md:px-28 py-5 md:py-24 flex flex-col justify-start items-start w-full">
         <h1>Calendar</h1>
         <Dashboard>
           <Suspense key={key}>

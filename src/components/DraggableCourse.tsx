@@ -16,6 +16,7 @@ export default function DraggableCourse({ course }: { course: Course }) {
 
   const style = transform
     ? {
+        touchAction: "none",
         gridColumnStart: course.startPeriod,
         gridColumnEnd: course.endPeriod + 1,
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
@@ -33,6 +34,7 @@ export default function DraggableCourse({ course }: { course: Course }) {
             : {
                 gridColumnStart: course.startPeriod,
                 gridColumnEnd: course.endPeriod + 1,
+                cursor: "move",
               }
         }
         ref={setNodeRef}
