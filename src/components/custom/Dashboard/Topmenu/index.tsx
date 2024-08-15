@@ -12,6 +12,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useParams } from "@/hooks/useParams";
+import { resolveYear } from "@/lib/utils";
+import { resolve } from "path";
 
 interface TopMenuProps {
   collapsed: boolean;
@@ -22,7 +24,7 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
   const { setParam, search } = useParams();
 
   const year = parseInt(
-    search.get("year") || new Date().getFullYear().toString()
+    search.get("year") || resolveYear(new Date()).toString()
   );
 
   function toggle5th() {
@@ -58,7 +60,9 @@ export default function TopMenu({ collapsed, setCollapsed }: TopMenuProps) {
         >
           <ChevronLeft size={22} />
         </Button>
-        <h6 className="text-center">{year}</h6>
+        <h6 className="text-center">
+          {year}-{year + 1}
+        </h6>
         <Button
           size="mini"
           variant="ghost"

@@ -17,3 +17,13 @@ export function parseFormCourse(course: Course): FormCourse {
     endPeriod: course.endPeriod.toString(),
   };
 }
+
+export function resolveYear(date: Date): number {
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  if (month < 8) {
+    return year-1;
+  } else {
+    return year;
+  }
+}

@@ -67,7 +67,9 @@ export default function CourseModal({ course, children }: CourseModalProps) {
         ) : (
           <>
             <div className="py-4">
-              <p>Year: {course.year}</p>
+              <p>
+                Year: {course.year}-{course.year + 1}
+              </p>
               <p>Start period: {course.startPeriod}</p>
               <p>End period: {course.endPeriod}</p>
             </div>
