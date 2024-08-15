@@ -29,7 +29,7 @@ export default function MultipleDroppables({ show5th }: { show5th?: boolean }) {
   show5th && droppables.push("5");
 
   return (
-    <div data-show={show5th} className="absolute top-0 left-0 w-full h-full grid grid-cols-4 data-[show=true]:grid-cols-5 gap-4 px-4">
+    <div data-show={show5th} className="absolute top-0 left-0 w-full h-full hidden md:grid grid-cols-4 data-[show=true]:grid-cols-5 gap-4 px-4">
       {droppables.map((id) => (
         <Droppable id={id} key={id} />
       ))}

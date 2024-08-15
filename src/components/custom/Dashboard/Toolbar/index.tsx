@@ -16,7 +16,7 @@ export default function Toolbar() {
       <Button
         size="circle"
         variant="outline"
-        className="m-2"
+        className="m-2 hidden md:flex"
         onClick={toggleDrag}
       >
         <Move size={22} />
