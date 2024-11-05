@@ -27,7 +27,7 @@ export default function CalendarPageLayout({
             <div
               className={`${
                 isCalendar && "flex flex-col-reverse justify-between"
-              } h-full max-h-max overflow-x-scroll md:overflow-hidden overflow-y-auto`}
+              } h-full overflow-x-scroll md:overflow-hidden overflow-y-auto`}
             >
               {isCalendar && <CalendarFooter show5th={show5th} />}
               {session ? (

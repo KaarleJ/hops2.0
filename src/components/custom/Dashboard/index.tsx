@@ -20,7 +20,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
           setCollapsed={setCollapsed}
         />
         <Separator />
-        <div className="border-l border-accent h-full max-h-max overflow-x-scroll md:overflow-x-hidden overflow-y-auto relative">
+        <div className="border-l border-accent h-full overflow-x-scroll md:overflow-x-hidden overflow-y-auto relative">
           {children}
         </div>
         {pathname === "/calendar" && <Toolbar />}
